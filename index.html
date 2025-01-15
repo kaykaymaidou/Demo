@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      #app {
+        width: 100vw;
+        height: 100vh;
+      }
+      .container-fluid {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 885px;
+      }
+      .btn-success {
+        width: 100px;
+      }
+      .tips {
+        color: #ff0000;
+      }
+      @media screen and (max-width: 992px) {
+        .container-fluid {
+          width: 100%;
+        }
+        .btn-success {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div class="container-fluid">
+        <form role="form" action="" class="row g-3">
+          <div class="col-md-4 themed-grid-col">
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1">姓名：</span>
+              <input type="text" class="form-control" placeholder="请输入姓名" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+          </div>
+          <div class="col-md-4 themed-grid-col">
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1">工号：</span>
+              <input type="text" class="form-control" placeholder="请输入工号" aria-label="JobNumber" aria-describedby="basic-addon1">
+            </div>
+          </div>
+          <div class="col-md-4 themed-grid-col">
+            <button type="submit" class="btn btn-success" onclick="handleSearch(event)">查询</button>
+          </div>
+          <p class="tips">注：输入正确姓名或者工号即可查询</p>
+        </form>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+      function handleSearch(e) {
+        const name = document.querySelector('input[aria-label="Username"]').value;
+        const jobNumber = document.querySelector('input[aria-label="JobNumber"]').value;
+        e.preventDefault();
+        if (!name && !jobNumber) {
+          alert('请输入姓名或者工号');
+          return;
+        }
+        window.location.href = `result.html?name=${name}&jobNumber=${jobNumber}`;
+      }
+    </script>
+  </body>
+</html>
