@@ -71,7 +71,12 @@
           alert('请输入姓名或者工号');
           return;
         }
-        window.location.href = `result.html?name=${name}&jobNumber=${jobNumber}`;
+        if (name === '张三' && jobNumber === '345783945') {
+          window.location.href = `result.html?name=${name}&jobNumber=${jobNumber}`;
+        } else {
+          alert('暂无查询结果');
+          return;
+        }
       }
     </script>
   </body>
